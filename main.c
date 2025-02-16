@@ -25,10 +25,12 @@ int main(int argc, char** argv) {
 
     // Main Loop
     while (!WindowShouldClose()) {
+        // Update our current scene 
+        scene_update(current_scene);
         // Begin drawing
         BeginDrawing();
-        // Run our current scene
-        scene_run(current_scene);
+        // Draw our current scene
+        scene_draw(current_scene);
         // End drawing
         EndDrawing();
     }
