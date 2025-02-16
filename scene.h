@@ -29,11 +29,10 @@ typedef void (*scene_on_unload)(scene_st* scene);
 
 /**
  * @brief   This struct is responsible for holding scene specific data.
- *          Such as update/draw functions, the target fps, etc.
+ *          Such as update/draw functions, load/unload, etc.
  */
 struct scene {
     uint16_t            scene_id;
-    uint16_t            target_fps;
 
     // Lifecycle Functions
     scene_on_load       on_load_function;
