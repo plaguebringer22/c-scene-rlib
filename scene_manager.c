@@ -15,6 +15,7 @@ scene_manager_st* scene_manager_create(scene_st* initial_scene) {
     manager->active_scene_id = initial_scene->scene_id;
     manager->current_scene_idx = 0;
     manager->scene_stack[0] = initial_scene;
+    scene_load(initial_scene);
 
     return manager;
 }
@@ -50,6 +51,7 @@ void scene_manager_push_scene(scene_manager_st* manager, scene_st* scene) {
     manager->current_scene_idx++;
     manager->scene_stack[manager->current_scene_idx] = scene;
     manager->active_scene_id = scene->scene_id;
+    scene_load(scene);
 }
 
 void scene_manager_pop_scene(scene_manager_st* manager) {
@@ -79,6 +81,7 @@ void scene_manager_replace_active_scene(scene_manager_st* manager, scene_st* sce
     if (manager == NULL || scene == NULL) return;
     manager->scene_stack[manager->current_scene_idx] = scene;
     manager->active_scene_id = scene->scene_id;
+    scene_load(scene);
 }
 
 void scene_manager_destroy(scene_manager_st* manager) {

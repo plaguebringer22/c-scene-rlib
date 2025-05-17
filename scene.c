@@ -5,6 +5,7 @@ static uint16_t scene_id_pool = 0;
 scene_st* scene_create() {
     scene_st* scene_new = (scene_st*) calloc(1, sizeof(scene_st));
     scene_new->scene_id = scene_id_pool++;
+    scene_new->scene_loaded = false;
     return scene_new;
 }
 
@@ -12,6 +13,8 @@ void scene_load(
     scene_st* scene
 ) {
     if (scene->on_load_function == NULL) return;
+    if (scene->scene_loaded) return;
+    scene->scene_loaded = true;
     (*(scene->on_load_function))(scene);
 }
 

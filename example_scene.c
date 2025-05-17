@@ -6,11 +6,13 @@ scene_st* alt_scene = NULL;
 void example_scene_on_load(scene_st* scene) {
     // Insert scene initialisation here such as loading assets, allocating memory, etc.
     alt_scene = get_example_alt_scene();
+    fprintf(stdout, "\033[36m[INFO]\033[0m Example Scene Loaded!\n");
 }
 
 void example_scene_on_unload(scene_st* scene) {
     // Dispose and free any resources here.
     scene_destroy(alt_scene);
+    fprintf(stdout, "\033[36m[INFO]\033[0m Example Scene Unloaded!\n");
 }
 
 void example_scene_on_update(float delta_time) {

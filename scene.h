@@ -34,6 +34,9 @@ typedef void (*scene_on_unload)(scene_st* scene);
 struct scene {
     uint16_t            scene_id;
 
+    // State vars
+    bool                scene_loaded;
+
     // Lifecycle Functions
     scene_on_load       on_load_function;
     scene_on_unload     on_unload_function;
@@ -107,3 +110,9 @@ void        scene_update(scene_st* scene);
  * @return      void;
  */
 void        scene_draw(scene_st* scene);
+
+/**
+ * @brief       Returns a boolean value indicating if `scene_load` has been called on this scene.
+ * @return      boolean value indicating if scene has been loaded.
+ */
+bool        scene_is_loaded(scene_st* scene);

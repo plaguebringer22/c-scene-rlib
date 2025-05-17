@@ -24,11 +24,6 @@ int main(int argc, char** argv) {
     initial_scene = get_example_scene();
     manager = scene_manager_create(initial_scene);
 
-    // Set our current scene to the example scene
-
-    // Load our scene
-    scene_load(scene_manager_get_active_scene(manager));
-
     // Main Loop
     while (!WindowShouldClose()) {
         // Update our current scene 
