@@ -7,9 +7,8 @@
 
 #include "scene_manager.h"
 #include "scene.h"
-#include "example_scene_alt.h"
 
 extern scene_manager_st* manager;
 
-scene_st* get_example_scene();
+scene_st* get_example_alt_scene();
 

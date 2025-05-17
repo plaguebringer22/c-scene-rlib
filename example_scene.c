@@ -1,27 +1,23 @@
 #include "example_scene.h"
 
 scene_st* example_scene = NULL;
+scene_st* alt_scene = NULL;
 
 void example_scene_on_load(scene_st* scene) {
     // Insert scene initialisation here such as loading assets, allocating memory, etc.
+    alt_scene = get_example_alt_scene();
 }
 
 void example_scene_on_unload(scene_st* scene) {
     // Dispose and free any resources here.
+    scene_destroy(alt_scene);
 }
 
 void example_scene_on_update(float delta_time) {
     // Insert on update code here, such as keypress checking, conditional checking, collision, etc.
-    if (IsKeyPressed(KEY_ENTER) && (IsKeyDown(KEY_LEFT_ALT) || IsKeyDown(KEY_RIGHT_ALT))) {
-        int display = GetCurrentMonitor();
-        if (IsWindowFullscreen()) {
-            ToggleFullscreen();
-            SetWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-        } else {
-            SetWindowSize(GetMonitorWidth(display), GetMonitorHeight(display));
-            ToggleFullscreen();
-        }
-    } 
+    if (IsKeyPressed(KEY_SPACE)) {
+        scene_manager_push_scene(manager, alt_scene);
+    }
 }
 
 void example_scene_on_draw() {
